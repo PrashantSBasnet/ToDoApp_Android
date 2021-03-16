@@ -60,6 +60,30 @@ public class Task {
         return id;
     }
 
+    public void setId(@NonNull Long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
+
     public String getTitle() {
         return title;
     }
