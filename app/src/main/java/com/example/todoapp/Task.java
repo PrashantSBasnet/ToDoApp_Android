@@ -1,6 +1,7 @@
 package com.example.todoapp;
 
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -15,7 +16,8 @@ import java.util.Date;
 public class Task {
 
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
     private Long id;
     private String title;
     private String description;
@@ -24,6 +26,7 @@ public class Task {
     @ColumnInfo(name="updated_date")
     private Date updatedDate;
     private int priority;
+
 
 
 
