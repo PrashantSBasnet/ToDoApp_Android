@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface TodoDao {
 
+    //accessing data using dao
+
     @Query("Select * from todos order by priority")
     List<Task> getAllTasks();
 
