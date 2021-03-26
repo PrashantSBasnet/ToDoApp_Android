@@ -13,6 +13,12 @@ import com.example.todoapp.data.Task;
 
 import java.util.List;
 
+/** creating interface to follow the design pattern
+    crud operation
+    dao using query method
+    contains all methods required to access database
+ **/
+
 @Dao
 public interface TodoDao {
 
@@ -25,7 +31,7 @@ public interface TodoDao {
     @Update
     void update(Task task);
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE) //to avoid duplication
     void insert(Task task);
 
     @Query("delete from todos")

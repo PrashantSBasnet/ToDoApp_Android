@@ -1,9 +1,16 @@
 package com.example.todoapp.data;
+
+
 import android.app.Application;
-
 import androidx.lifecycle.LiveData;
-
 import java.util.List;
+
+
+
+/**
+ * access to multiple data sources
+ * note: not the part of Architecture Components libraries, but is good for code separation and architecture
+ */
 
 public class Repository {
 
