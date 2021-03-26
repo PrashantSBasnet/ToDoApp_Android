@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.data;
 
 
 import androidx.annotation.NonNull;
@@ -13,6 +13,10 @@ import java.util.Date;
 @Entity(tableName = "todos")
 
 
+/**
+ * Defining Entities and Attributes for database
+ * Setters and Getters
+ */
 public class Task {
 
 

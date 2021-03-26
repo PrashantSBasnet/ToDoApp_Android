@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.data;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -7,7 +7,15 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
+import com.example.todoapp.data.Task;
+
 import java.util.List;
+
+
+/** creating interface to follow the design pattern
+    crud operation
+    dao using query method
+ **/
 
 @Dao
 public interface TodoDao {
