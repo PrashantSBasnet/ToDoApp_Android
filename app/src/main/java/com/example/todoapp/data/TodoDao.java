@@ -1,5 +1,6 @@
 package com.example.todoapp.data;
 
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -29,6 +30,5 @@ public interface TodoDao {
 
     @Query("delete from todos")
     void deleteAll();
-
 
 }
