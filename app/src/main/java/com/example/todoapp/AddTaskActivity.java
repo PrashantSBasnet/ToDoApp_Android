@@ -1,17 +1,19 @@
 package com.example.todoapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-
+import com.example.todoapp.data.Repository;
+import com.example.todoapp.data.Task;
 
 import java.util.Date;
 
+
 public class AddTaskActivity extends AppCompatActivity {
+
 
     private EditText titleEditText;
     private EditText descEditText;
@@ -41,10 +43,6 @@ public class AddTaskActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
-
 
 
     }
