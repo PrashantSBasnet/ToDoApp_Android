@@ -34,6 +34,7 @@ public class Repository {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
+
                 dao.deleteAll();
             }
         });
@@ -45,6 +46,7 @@ public class Repository {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
+
                 dao.update(task);
             }
         });
@@ -56,6 +58,7 @@ public class Repository {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
+
                 dao.insert(task);
             }
         });

@@ -40,6 +40,7 @@ public class AddTaskActivity extends AppCompatActivity {
 
                 Task task = new Task(title, desc,  new Date(), new Date(), 1);
                 repository.addTask(task);
+
                 finish();
             }
         });
