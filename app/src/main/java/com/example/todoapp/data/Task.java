@@ -12,7 +12,10 @@ import java.util.Date;
 
 @Entity(tableName = "todos")
 
-
+/**
+ * getters and setters
+ * defining entities and attributes
+ */
 public class Task {
 
 

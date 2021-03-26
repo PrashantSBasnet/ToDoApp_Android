@@ -9,6 +9,10 @@ import androidx.room.Update;
 
 import java.util.List;
 
+
+//interface
+//query method for crud operation
+
 @Dao
 public interface TodoDao {
 
