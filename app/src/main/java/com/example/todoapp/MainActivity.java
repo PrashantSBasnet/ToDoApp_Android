@@ -3,6 +3,7 @@ package com.example.todoapp;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         //repository = Repository.getRepository(this.getApplication());
-        viewModel.getAllTasks().observe(this, new Observer<List<Task>>() {
+        viewModel.getAllTasks().observe(this, new Observer <List<Task>>() {
             @Override
             public void onChanged(List<Task> tasks) {
                 if(tasks != null)
