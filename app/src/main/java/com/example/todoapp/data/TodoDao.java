@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.data;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
