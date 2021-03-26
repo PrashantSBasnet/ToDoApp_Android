@@ -29,7 +29,8 @@ public  abstract class AppDatabase extends RoomDatabase {
 
     public static AppDatabase getDatabase(Context context){
 
-        //if instance is null create a new instance else leave it the way it is
+        //if instance is null create a new instance else return the existing instance
+
         if(INSTANCE == null){
             synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
@@ -41,7 +42,6 @@ public  abstract class AppDatabase extends RoomDatabase {
                 }
             }
         }
-
         return INSTANCE;
     }
 
@@ -67,7 +67,6 @@ public  abstract class AppDatabase extends RoomDatabase {
 
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
-
             super.onOpen(db);
         }
     };

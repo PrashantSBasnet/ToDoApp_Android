@@ -1,15 +1,19 @@
 package com.example.todoapp;
 
 import android.app.Application;
-
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-
 import com.example.todoapp.data.Repository;
 import com.example.todoapp.data.Task;
-
 import java.util.List;
+
+
+/**
+ * ViewModel provides data to the UI and survive configuration changes
+ * ViewModel acts as a communication center between the Repository and the UI
+ * Android ViewModel contains application reference
+ */
 
 public class MainViewModel extends AndroidViewModel {
 
