@@ -42,8 +42,9 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getAllTasks().observe(this, new Observer <List<Task>>() {
             @Override
             public void onChanged(List<Task> tasks) {
-                if(tasks != null)
-                    adapter.setData(taskList);
+                if(tasks != null) {
+                    adapter.setData(tasks);
+                }
             }
         });
 
