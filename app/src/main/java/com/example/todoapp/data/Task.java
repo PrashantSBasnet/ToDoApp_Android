@@ -42,6 +42,9 @@ public class Task {
         this.priority = priority;
     }
 
+    public Task(String title, String desc, Date date, Date date1) {
+    }
+
     public Long getId() {
         return id;
     }

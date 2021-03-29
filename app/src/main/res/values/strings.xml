@@ -4,4 +4,14 @@
     <string name="textview">TextView</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="no_todo">No Todo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+\
+
+
+
+    <string name="main_activity_name">All Tasks</string>
+    <string name="add_task_activity_name">Add a New Task</string>
 </resources>
