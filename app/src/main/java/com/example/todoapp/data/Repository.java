@@ -53,7 +53,6 @@ public class Repository {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
-
                 dao.update(task);
             }
         });

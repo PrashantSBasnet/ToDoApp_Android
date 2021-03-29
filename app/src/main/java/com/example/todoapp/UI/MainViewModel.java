@@ -20,6 +20,8 @@ public class MainViewModel extends AndroidViewModel {
     private Repository repository;
     LiveData<List<Task>> taskList;
 
+    Task task;
+
     public MainViewModel(@NonNull Application application) {
         super(application);
         repository = Repository.getRepository(application);
@@ -30,5 +32,24 @@ public class MainViewModel extends AndroidViewModel {
     public LiveData<List<Task>> getAllTasks(){
         return taskList;
     }
+
+
+    //setter and getters
+
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
+    public Task getTask(){
+
+        return task;
+    }
+
+
+    //    public Task getTodo(int position){
+//
+//        return
+//        }
 
 }

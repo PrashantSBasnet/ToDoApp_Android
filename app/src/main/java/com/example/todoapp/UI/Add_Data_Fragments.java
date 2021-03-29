@@ -67,6 +67,7 @@ public class Add_Data_Fragments extends Fragment {
                 String desc = descEditText.getText().toString();
 
 
+                //insert data to database
                 Task task = new Task(title, desc,  new Date(), new Date(), 1);
                 repository.addTask(task);
 

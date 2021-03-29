@@ -3,6 +3,8 @@ package com.example.todoapp;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,7 +12,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.todoapp.UI.Add_Data_Fragments;
 import com.example.todoapp.UI.MainViewModel;
+import com.example.todoapp.UI.RecyclerViewClickInterface;
 import com.example.todoapp.UI.TaskAdapter;
 import com.example.todoapp.UI.TodoFragment;
 import com.example.todoapp.data.Task;
@@ -19,7 +23,7 @@ import java.util.List;
 
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     public static String TAG = MainActivity.class.getSimpleName();
 
@@ -31,12 +35,14 @@ public class MainActivity extends AppCompatActivity {
     private MainViewModel viewModel;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
+        //calling fragment
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.container, TodoFragment.newInstance())
@@ -73,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
 
          */
     }
+
+
+
+
 }
 
 

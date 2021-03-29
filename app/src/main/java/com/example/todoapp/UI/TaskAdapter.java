@@ -1,6 +1,7 @@
 package com.example.todoapp.UI;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -13,16 +14,32 @@ import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
+    int pos;
+
+
+
+
+
+
+    private final TodoFragment todoFragment;
+    private RecyclerViewClickInterface recyclerViewClickInterface;
 
     private List<Task> taskList;
 
-    public TaskAdapter(TodoFragment todoFragment) {
+
+
+    public TaskAdapter(TodoFragment todoFragment, RecyclerViewClickInterface recyclerViewClickInterface) {
+
+        this.todoFragment =todoFragment;
+        this.recyclerViewClickInterface=recyclerViewClickInterface;
     }
+
 
     public void setData(List<Task> data){
         taskList = data;
         notifyDataSetChanged();
     }
+
 
     @NonNull
     @Override
@@ -46,16 +63,40 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         }
     }
 
+
+    public List<Task> getTaskList() {
+        return taskList;
+    }
+
+    //INNER CLASS
     class ViewHolder extends RecyclerView.ViewHolder{
+
+        int pos1;
 
         private TextView titleTextView;
         private  TextView descTextView;
+
+
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.recyclerview_item, parent, false));
             titleTextView = itemView.findViewById(R.id.title_tv);
             descTextView = itemView.findViewById(R.id.description_tv);
+
+
+
+            itemView.setOnClickListener( new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+
+                }
+            });
+
         }
+
+
 
         public void onBind(Task task) {
             titleTextView.setText(task.getTitle());

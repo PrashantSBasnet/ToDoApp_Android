@@ -10,18 +10,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import com.example.todoapp.R;
 import com.example.todoapp.data.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
-import androidx.appcompat.widget.Toolbar;
 
 
-
-public class TodoFragment extends Fragment {
+public class TodoFragment extends Fragment implements  RecyclerViewClickInterface {
 
     private FloatingActionButton fab;
-    private TaskAdapter adapter;
+    public TaskAdapter adapter;
+    public MainViewModel mTodoViewModel;
 
     public static TodoFragment newInstance() {
         return new TodoFragment();
@@ -40,9 +42,14 @@ public class TodoFragment extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_todo, container, false);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
-        this.adapter = new TaskAdapter(this);
+
+        this.adapter = new TaskAdapter(this,this);
+
+
+
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
         fab = view.findViewById(R.id.floatingActionButton);
 
         return view;
@@ -55,7 +62,7 @@ public class TodoFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         // deprecated, mTodoViewModel = of(this).get(TodoViewModel.class);
-        MainViewModel mTodoViewModel = new ViewModelProvider(this).get(MainViewModel.class);
+         mTodoViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
 
         // ToDo: Using the ViewModel
 
@@ -85,6 +92,34 @@ public class TodoFragment extends Fragment {
                         .commitNow();
             }
         });
+
+    }
+
+    @Override
+    public int onItemClick(int position) {
+        Toast.makeText(getActivity(), ""+position, Toast.LENGTH_SHORT).show();
+
+        List<Task>listofTasks= adapter.getTaskList();
+
+        Task task= listofTasks.get(position);  //value received
+
+
+        mTodoViewModel.setTask(task);
+        //mTodoViewModel.getTask();
+
+
+        //Transaction
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, UpdateFragment.newInstance())
+                .commitNow();
+
+
+        return position;
+    }
+
+    @Override
+    public void onLongItemClick(int position) {
 
     }
 }
