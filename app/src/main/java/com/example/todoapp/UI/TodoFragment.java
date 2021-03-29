@@ -61,7 +61,9 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        // deprecated, mTodoViewModel = of(this).get(TodoViewModel.class);
+
+
+        //getActivity() instead of this because ToDoFragment not MainActivity
          mTodoViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
 
         // ToDo: Using the ViewModel
@@ -82,7 +84,9 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
 
 
 
-        //switching between fragments
+
+
+        //--------switching between fragments
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,9 +96,12 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
                         .commitNow();
             }
         });
+        //---------------------------------
 
     }
 
+
+    //when a to_do item is clicked
     @Override
     public int onItemClick(int position) {
         Toast.makeText(getActivity(), ""+position, Toast.LENGTH_SHORT).show();
@@ -108,7 +115,7 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
         //mTodoViewModel.getTask();
 
 
-        //Transaction
+
 
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, UpdateFragment.newInstance())
