@@ -1,4 +1,4 @@
-package com.example.todoapp;
+package com.example.todoapp.UI;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
