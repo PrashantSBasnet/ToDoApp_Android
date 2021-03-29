@@ -52,7 +52,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         private  TextView descTextView;
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
-            super(inflater.inflate(R.layout.item_task, parent, false));
+            super(inflater.inflate(R.layout.recyclerview_item, parent, false));
             titleTextView = itemView.findViewById(R.id.title_tv);
             descTextView = itemView.findViewById(R.id.description_tv);
         }
@@ -60,7 +60,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         public void onBind(Task task) {
             titleTextView.setText(task.getTitle());
             descTextView.setText(task.getDescription());
-
         }
     }
+
 }

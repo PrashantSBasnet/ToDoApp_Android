@@ -6,8 +6,8 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
-
 import java.util.Date;
+
 
 @Entity(tableName = "todos")
 public class Task {
@@ -42,8 +42,7 @@ public class Task {
         this.priority = priority;
     }
 
-    public Task(String title, String desc, Date date, Date date1) {
-    }
+
 
     public Long getId() {
         return id;

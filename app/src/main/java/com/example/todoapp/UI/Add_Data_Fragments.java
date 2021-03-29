@@ -4,12 +4,14 @@ import android.app.Application;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.todoapp.R;
 import com.example.todoapp.data.Repository;
@@ -46,37 +48,47 @@ public class Add_Data_Fragments extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_add__data__fragments, container, false);
 
-        titleEditText = view.findViewById(R.id.title_et);
-        descEditText = view.findViewById(R.id.desc_dt);
+        titleEditText = (EditText) view.findViewById(R.id.title_et);
+        descEditText = (EditText)view.findViewById(R.id.desc_dt);
         submitButton = view.findViewById(R.id.submit_btn);
+
+        //converting to string
 
         repository = Repository.getRepository(getActivity().getApplication());
 
         // submitButton = view.findViewById(R.id.submit_btn);
         submitButton.setOnClickListener(new View.OnClickListener() {
 
-
-
             //to save data
             @Override
             public void onClick(View v) {
 
-                String title = titleEditText.toString();
-                String desc = descEditText.toString();
-
+                String title = titleEditText.getText().toString();
+                String desc = descEditText.getText().toString();
 
 
                 Task task = new Task(title, desc,  new Date(), new Date(), 1);
                 repository.addTask(task);
 
+                //to switch to the another fragment
+                //-----------
+                TodoFragment todoFragment = TodoFragment.newInstance();
+                assert getParentFragmentManager()!=null;
+                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+                transaction.replace(R.id.container, todoFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+                //-----------
+
+                /* alternatively
                 //switches to the main fragment
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, TodoFragment.newInstance())
                         .commitNow();
+                        */
+
             }
         });
-
-
 
         return view;
     }

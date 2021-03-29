@@ -28,7 +28,6 @@ public class MainViewModel extends AndroidViewModel {
 
 
     public LiveData<List<Task>> getAllTasks(){
-
         return taskList;
     }
 
