@@ -49,6 +49,9 @@ public class MainViewModel extends AndroidViewModel {
     public void deleteTask(Task task){
         repository.deleteTask(task);
     }
+    public void deleteAll(){
+        repository.deleteAll();
+    }
 
 
     //    public Task getTodo(int position){

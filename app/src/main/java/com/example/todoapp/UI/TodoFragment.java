@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -22,7 +25,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 
-public class TodoFragment extends Fragment implements  RecyclerViewClickInterface {
+public class TodoFragment extends Fragment  implements  RecyclerViewClickInterface {
 
     private FloatingActionButton fab;
     public TaskAdapter adapter;
@@ -33,21 +36,52 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
         return new TodoFragment();
     }
 
+
     public TodoFragment() {
         // Required empty public constructor
     }
 
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.examplemenu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.deleteicon:  {
+
+                mTodoViewModel.deleteAll();
+                return true;
+            }
+            case R.id.shareall: {
+
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view;
+
+
 
         view = inflater.inflate(R.layout.fragment_todo, container, false);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
 
-        this.adapter = new TaskAdapter(this,this);
+        this.adapter = new TaskAdapter(this, this);
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -69,15 +103,12 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
-                List<Task> taskList= adapter.getTaskList();
+                List<Task> taskList = adapter.getTaskList();
                 mTodoViewModel.deleteTask(taskList.get(position));
 
             }
         }).attachToRecyclerView(recyclerView);
         //------------------------
-
-
-
 
 
         //for setting floating button
@@ -87,16 +118,13 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
     }
 
 
-
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
 
-
         //getActivity() instead of this because ToDoFragment not MainActivity
-         mTodoViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
+        mTodoViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
 
         // ToDo: Using the ViewModel
 
@@ -113,9 +141,6 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
             }
 
         });
-
-
-
 
 
         //--------switching between fragments
@@ -136,11 +161,11 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
     //when a to_do item is clicked
     @Override
     public int onItemClick(int position) {
-        Toast.makeText(getActivity(), ""+position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
 
-        List<Task>listofTasks= adapter.getTaskList();
+        List<Task> listofTasks = adapter.getTaskList();
 
-        Task task= listofTasks.get(position);  //value received
+        Task task = listofTasks.get(position);  //value received
 
         mTodoViewModel.setTask(task);
         //mTodoViewModel.getTask();
@@ -151,6 +176,6 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
 
         return position;
     }
-
-
 }
+
+

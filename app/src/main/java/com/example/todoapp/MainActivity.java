@@ -2,6 +2,7 @@ package com.example.todoapp;
 
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -10,7 +11,11 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.todoapp.UI.Add_Data_Fragments;
 import com.example.todoapp.UI.MainViewModel;
@@ -23,7 +28,7 @@ import java.util.List;
 
 
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
 
     public static String TAG = MainActivity.class.getSimpleName();
 
@@ -33,6 +38,7 @@ public class MainActivity extends AppCompatActivity  {
     private TaskAdapter adapter;
     private FloatingActionButton fab;
     private MainViewModel viewModel;
+
 
 
 
@@ -49,49 +55,20 @@ public class MainActivity extends AppCompatActivity  {
                     .commitNow();
         }
 
-        /*
-        recyclerView = findViewById(R.id.task_list);
-        fab = findViewById(R.id.floatingActionButton);
-        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        adapter = new TaskAdapter();
-        recyclerView.setAdapter(adapter);
-
-        //repository = Repository.getRepository(this.getApplication());
-        viewModel.getAllTasks().observe(this, new Observer <List<Task>>() {
-            @Override
-            public void onChanged(List<Task> tasks) {
-                if(tasks != null) {
-                    adapter.setData(tasks);
-                }
-            }
-        });
-
-
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
-         */
     }
 
 
+    /*
+    //to set menubar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.examplemenu, menu);
+        return true;
+    }
+    */
 
 
 }
-
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        taskList = viewModel.getAllTasks();
-//        adapter.setDate(taskList);
-//
-//    }
 
 
