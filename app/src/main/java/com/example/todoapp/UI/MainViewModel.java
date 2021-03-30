@@ -34,9 +34,7 @@ public class MainViewModel extends AndroidViewModel {
     }
 
 
-    //setter and getters
-
-
+    //------setter and getters
     public void setTask(Task task) {
         this.task = task;
     }
@@ -45,18 +43,14 @@ public class MainViewModel extends AndroidViewModel {
 
         return task;
     }
+    //------
 
     public void deleteTask(Task task){
         repository.deleteTask(task);
     }
+
     public void deleteAll(){
         repository.deleteAll();
     }
-
-
-    //    public Task getTodo(int position){
-//
-//        return
-//        }
 
 }

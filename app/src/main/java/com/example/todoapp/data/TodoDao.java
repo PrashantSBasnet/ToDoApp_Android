@@ -9,8 +9,6 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.todoapp.data.Task;
-
 import java.util.List;
 
 /** creating interface to follow the design pattern
@@ -24,7 +22,6 @@ public interface TodoDao {
 
     @Query("select * from todos order by priority")
     LiveData<List<Task>> getAllTasks();
-
 
     @Update
     void update(Task task);

@@ -33,6 +33,7 @@ public class Repository {
 
 
     public LiveData<List<Task>> getAllTasks(){
+
         return dao.getAllTasks();
     }
 
@@ -41,7 +42,6 @@ public class Repository {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
-
                 dao.deleteAll();
             }
         });
@@ -49,7 +49,6 @@ public class Repository {
 
 
     public void update(Task task){
-
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
@@ -64,7 +63,6 @@ public class Repository {
         AppDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
-
                 dao.insert(task);
             }
         });

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -65,7 +64,6 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
                 return true;
             }
             case R.id.exit: {
-
                 System.exit(0);
                 return true;
             }
@@ -189,7 +187,7 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
     }
 
     public void showMissing(View view) {
-        Toast toast = Toast.makeText(getActivity(), "Empty field is not a todo. Please enter some value",
+        Toast toast = Toast.makeText(getActivity(), "Empty field is not a todo. Please enter some values",
                 Toast.LENGTH_SHORT);
         toast.show();
     }

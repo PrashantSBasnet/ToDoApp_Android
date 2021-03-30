@@ -39,11 +39,9 @@ public class Add_Data_Fragments extends Fragment {
 
     public Add_Data_Fragments()
     {
-
     }
 
     public static Fragment newInstance() {
-
         return new Add_Data_Fragments();
     }
 
@@ -78,8 +76,6 @@ public class Add_Data_Fragments extends Fragment {
                 }
 
                 else {
-
-
                     //insert data to database
                     Task task = new Task(title, desc, new Date(), new Date(), 1);
                     repository.addTask(task);
@@ -124,6 +120,7 @@ public class Add_Data_Fragments extends Fragment {
         inflater.inflate(R.menu.addmenu, menu);
     }
 
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -131,14 +128,12 @@ public class Add_Data_Fragments extends Fragment {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, TodoFragment.newInstance())
                         .commitNow();
-
                 return true;
             }
 
             default:
                 return super.onOptionsItemSelected(item);
         }
-
     }
 
 
@@ -147,6 +142,7 @@ public class Add_Data_Fragments extends Fragment {
                 Toast.LENGTH_SHORT);
         toast.show();
     }
+
 
 
     public void showMissing(View view) {

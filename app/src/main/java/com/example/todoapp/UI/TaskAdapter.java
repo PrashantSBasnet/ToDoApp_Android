@@ -10,16 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.todoapp.R;
 import com.example.todoapp.data.Task;
 
+import java.util.Date;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
-
-
-
-
-
-
-
 
     private final TodoFragment todoFragment;
     private RecyclerViewClickInterface recyclerViewClickInterface;
@@ -29,10 +23,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
 
     public TaskAdapter(TodoFragment todoFragment, RecyclerViewClickInterface recyclerViewClickInterface) {
-
         this.todoFragment =todoFragment;
         this.recyclerViewClickInterface=recyclerViewClickInterface;
     }
+
 
 
     public void setData(List<Task> data){
@@ -67,26 +61,29 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
 
 
-    //created to find the touch on screen --- position
+    //created to find the position of clicked item
     public List<Task> getTaskList() {
-
         return taskList;
     }
 
-    //INNER CLASS
-    class ViewHolder extends RecyclerView.ViewHolder{
 
-        int pos1;
+    //-------INNER CLASS---------//
+    class ViewHolder extends RecyclerView.ViewHolder{
 
         private TextView titleTextView;
         private  TextView descTextView;
+        private TextView todoDate;
+
 
 
 
         public ViewHolder(LayoutInflater inflater, ViewGroup parent) {
             super(inflater.inflate(R.layout.recyclerview_item, parent, false));
+
             titleTextView = itemView.findViewById(R.id.title_tv);
             descTextView = itemView.findViewById(R.id.description_tv);
+
+            todoDate = itemView.findViewById(R.id.todo_date);
 
 
 
@@ -103,9 +100,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
 
 
+        //setting data on the layout
         public void onBind(Task task) {
             titleTextView.setText(task.getTitle());
             descTextView.setText(task.getDescription());
+            todoDate.setText(task.getUpdatedDate().toString());
         }
     }
 
