@@ -1,10 +1,13 @@
 package com.example.todoapp.UI;
 
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,6 +27,7 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
     private FloatingActionButton fab;
     public TaskAdapter adapter;
     public MainViewModel mTodoViewModel;
+    private RecyclerView recyclerView;
 
     public static TodoFragment newInstance() {
         return new TodoFragment();
@@ -41,19 +45,47 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
         View view;
 
         view = inflater.inflate(R.layout.fragment_todo, container, false);
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
+        recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview);
 
         this.adapter = new TaskAdapter(this,this);
-
-
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
+
+        /*
+         Add a touch helper to the RecyclerView to recognize when a user swipes to delete an item.
+         An ItemTouchHelper enables touch behavior (like swipe and move) on each ViewHolder,
+         and uses callbacks to signal when a user is performing these actions.
+         */
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                int position = viewHolder.getAdapterPosition();
+                List<Task> taskList= adapter.getTaskList();
+                mTodoViewModel.deleteTask(taskList.get(position));
+
+            }
+        }).attachToRecyclerView(recyclerView);
+        //------------------------
+
+
+
+
+
+        //for setting floating button
         fab = view.findViewById(R.id.floatingActionButton);
 
         return view;
     }
+
 
 
 
@@ -120,22 +152,5 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
         return position;
     }
 
-    @Override
-    public void onLongItemClick(int position) {
-        Toast.makeText(getActivity(), ""+position, Toast.LENGTH_SHORT).show();
 
-        List<Task>listofTasks= adapter.getTaskList();
-
-        Task task= listofTasks.get(position);  //value received
-
-        mTodoViewModel.setTask(task);
-        //mTodoViewModel.getTask();
-
-        getActivity().getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, DeleteFragment.newInstance())
-                .commitNow();
-
-
-
-    }
 }

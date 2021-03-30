@@ -25,8 +25,6 @@ public interface TodoDao {
     @Query("select * from todos order by priority")
     LiveData<List<Task>> getAllTasks();
 
-    @Delete
-    void delete(Task task);
 
     @Update
     void update(Task task);
@@ -37,4 +35,6 @@ public interface TodoDao {
     @Query("delete from todos")
     void deleteAll();
 
+    @Delete
+    void deleteTask(Task task);
 }
