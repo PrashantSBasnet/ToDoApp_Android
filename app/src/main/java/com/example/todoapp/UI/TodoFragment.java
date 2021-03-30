@@ -110,23 +110,32 @@ public class TodoFragment extends Fragment implements  RecyclerViewClickInterfac
 
         Task task= listofTasks.get(position);  //value received
 
-
         mTodoViewModel.setTask(task);
         //mTodoViewModel.getTask();
-
-
-
 
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.container, UpdateFragment.newInstance())
                 .commitNow();
-
 
         return position;
     }
 
     @Override
     public void onLongItemClick(int position) {
+        Toast.makeText(getActivity(), ""+position, Toast.LENGTH_SHORT).show();
+
+        List<Task>listofTasks= adapter.getTaskList();
+
+        Task task= listofTasks.get(position);  //value received
+
+        mTodoViewModel.setTask(task);
+        //mTodoViewModel.getTask();
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, DeleteFragment.newInstance())
+                .commitNow();
+
+
 
     }
 }
