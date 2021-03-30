@@ -10,17 +10,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.todoapp.R;
 import com.example.todoapp.data.Task;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
+    private static final String DATE_FORMAT = "dd/MM/yyy";
     private final TodoFragment todoFragment;
     private RecyclerViewClickInterface recyclerViewClickInterface;
 
     private List<Task> taskList;
 
-
+    private SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT, Locale.getDefault());
 
     public TaskAdapter(TodoFragment todoFragment, RecyclerViewClickInterface recyclerViewClickInterface) {
         this.todoFragment =todoFragment;
@@ -86,26 +89,28 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
             todoDate = itemView.findViewById(R.id.todo_date);
 
 
-
             itemView.setOnClickListener( new View.OnClickListener(){
 
                 @Override
                 public void onClick(View v) {
                     recyclerViewClickInterface.onItemClick(getAdapterPosition());
-
                 }
             });
-
         }
 
 
 
         //setting data on the layout
         public void onBind(Task task) {
+
             titleTextView.setText(task.getTitle());
             descTextView.setText(task.getDescription());
-            todoDate.setText(task.getUpdatedDate().toString());
+
+            //formatting date to insert
+            String updatedAt= dateFormat.format(task.getUpdatedDate());
+            todoDate.setText(updatedAt);
         }
     }
+
 
 }

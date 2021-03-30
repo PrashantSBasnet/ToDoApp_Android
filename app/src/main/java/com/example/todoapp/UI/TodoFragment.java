@@ -116,7 +116,6 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
 
         //for setting floating button
         fab = view.findViewById(R.id.floatingActionButton);
-
         return view;
     }
 
@@ -186,11 +185,8 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
         return position;
     }
 
-    public void showMissing(View view) {
-        Toast toast = Toast.makeText(getActivity(), "Empty field is not a todo. Please enter some values",
-                Toast.LENGTH_SHORT);
-        toast.show();
-    }
+
+
 }
 
 

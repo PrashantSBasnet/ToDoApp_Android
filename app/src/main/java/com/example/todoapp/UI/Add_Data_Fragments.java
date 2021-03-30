@@ -24,6 +24,7 @@ import com.example.todoapp.data.Task;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 //fist ui
@@ -36,6 +37,8 @@ public class Add_Data_Fragments extends Fragment {
     private Button submitButton;
     private MainViewModel todoViewModel;
     private Repository repository;
+    private Date today;
+    SimpleDateFormat formatter;
 
     public Add_Data_Fragments()
     {
@@ -76,6 +79,7 @@ public class Add_Data_Fragments extends Fragment {
                 }
 
                 else {
+
                     //insert data to database
                     Task task = new Task(title, desc, new Date(), new Date(), 1);
                     repository.addTask(task);
