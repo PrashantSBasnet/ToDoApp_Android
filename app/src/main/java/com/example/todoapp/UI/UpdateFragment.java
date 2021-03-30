@@ -16,12 +16,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.todoapp.R;
 import com.example.todoapp.data.Repository;
 import com.example.todoapp.data.Task;
 
 import java.util.Date;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 
 public class UpdateFragment extends Fragment {
@@ -32,6 +35,7 @@ public class UpdateFragment extends Fragment {
     EditText edit_title,edit_desc;
     Button update_btn;
     Button share_btn;
+
     private Repository repository;
 
     String update_description,update_title;
@@ -127,14 +131,14 @@ public class UpdateFragment extends Fragment {
 
                 repository.update(task);
 
+
+                Toast toast = Toast.makeText(getActivity(),"Updated Successfully",LENGTH_SHORT);
+
                 //to switch to the another fragment
                 //-----------
-                TodoFragment todoFragment = TodoFragment.newInstance();
-                assert getParentFragmentManager()!=null;
-                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, todoFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, TodoFragment.newInstance())
+                        .commitNow();
             }
         });
 
@@ -165,6 +169,11 @@ public class UpdateFragment extends Fragment {
                 return true;
             }
 
+            case R.id.shareall:
+                {
+                shareText(share_btn);
+            }
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -182,14 +191,9 @@ public class UpdateFragment extends Fragment {
         ShareCompat.IntentBuilder
                 .from(getActivity())
                 .setType(mimeType)
-                .setChooserTitle("Hello there")
+                .setChooserTitle(txt+"/n"+des)
                 .setText(txt)
                 .startChooser();
 
     }
-
-
-
-
-
 }

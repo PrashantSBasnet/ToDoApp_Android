@@ -8,10 +8,6 @@
         android:title="backbutton"
         app:showAsAction="ifRoom"/>
 
-    <item android:id="@+id/shareall"
-        app:showAsAction="never"
-        android:title="Share"
-        />
 
 
 </menu>

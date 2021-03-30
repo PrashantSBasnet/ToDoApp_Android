@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -23,6 +24,8 @@ import com.example.todoapp.data.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 
 public class TodoFragment extends Fragment  implements  RecyclerViewClickInterface {
@@ -61,8 +64,9 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
                 mTodoViewModel.deleteAll();
                 return true;
             }
-            case R.id.shareall: {
+            case R.id.exit: {
 
+                System.exit(0);
                 return true;
             }
             default:
@@ -75,7 +79,6 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view;
-
 
 
         view = inflater.inflate(R.layout.fragment_todo, container, false);
@@ -105,6 +108,7 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
                 int position = viewHolder.getAdapterPosition();
                 List<Task> taskList = adapter.getTaskList();
                 mTodoViewModel.deleteTask(taskList.get(position));
+                Toast toast = Toast.makeText(getActivity(),"Deleted Task",LENGTH_SHORT);
 
             }
         }).attachToRecyclerView(recyclerView);

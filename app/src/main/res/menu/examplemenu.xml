@@ -7,10 +7,13 @@
         android:title="DeleteAll"
         app:showAsAction="ifRoom"/>
 
-    <item android:id="@+id/shareall"
+
+    <item android:id="@+id/about"
         app:showAsAction="never"
-        android:title="Share"
-      />
+        android:title="About" />
+
+
+
 
     <item android:id="@+id/exit"
         app:showAsAction="never"
