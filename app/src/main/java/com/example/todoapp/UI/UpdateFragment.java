@@ -2,11 +2,16 @@ package com.example.todoapp.UI;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ShareCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -26,9 +31,12 @@ public class UpdateFragment extends Fragment {
 
     EditText edit_title,edit_desc;
     Button update_btn;
+    Button share_btn;
     private Repository repository;
 
     String update_description,update_title;
+
+    private String mShareTextEditText, mShareDescriptionText;
 
 
     public UpdateFragment() {
@@ -36,6 +44,7 @@ public class UpdateFragment extends Fragment {
     }
 
     public static Fragment newInstance() {
+
         return  new UpdateFragment();
     }
 
@@ -62,6 +71,8 @@ public class UpdateFragment extends Fragment {
         edit_title = (EditText)view.findViewById(R.id.update_title);
         edit_desc = (EditText)view.findViewById(R.id.update_desc);
         update_btn=(Button)view.findViewById(R.id.update_btn);
+
+        share_btn =(Button)view.findViewById(R.id.button2);
         //------
 
 
@@ -71,8 +82,17 @@ public class UpdateFragment extends Fragment {
 
 
 
-
         repository = Repository.getRepository(getActivity().getApplication());
+
+
+        share_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                shareText(share_btn);
+            }
+        });
+
+
 
         update_btn.setOnClickListener(new View.OnClickListener() {
 
@@ -93,6 +113,9 @@ public class UpdateFragment extends Fragment {
 
                 String title = edit_title.getText().toString();
                 String desc = edit_desc.getText().toString();
+
+
+
 
                 task.setDescription(desc);
                 task.setTitle(title);
@@ -118,4 +141,55 @@ public class UpdateFragment extends Fragment {
 
         return  view;
     }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.updatemenu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.backbutton:  {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, TodoFragment.newInstance())
+                        .commitNow();
+
+                return true;
+            }
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
+
+    //Implict intents
+
+    public void shareText(Button share_btn) {
+        //values to be shared using implicit intent
+        String txt =mShareTextEditText=edit_title.getText().toString();
+        String des= mShareDescriptionText=edit_desc.getText().toString();
+        String mimeType = "text/plain";
+        ShareCompat.IntentBuilder
+                .from(getActivity())
+                .setType(mimeType)
+                .setChooserTitle("Hello there")
+                .setText(txt)
+                .startChooser();
+
+    }
+
+
+
+
+
 }

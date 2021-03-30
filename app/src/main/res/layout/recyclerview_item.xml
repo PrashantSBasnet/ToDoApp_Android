@@ -35,13 +35,14 @@
         style="@style/TextAppearance.AppCompat.Small"
         android:layout_width="116dp"
         android:layout_height="26dp"
-        android:layout_marginStart="276dp"
+
+        android:layout_marginStart="268dp"
+        android:layout_marginLeft="268dp"
         android:layout_marginBottom="16dp"
+        android:text="Todo Date"
         android:textColor="@android:color/primary_text_light"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Todo Date"
-        />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

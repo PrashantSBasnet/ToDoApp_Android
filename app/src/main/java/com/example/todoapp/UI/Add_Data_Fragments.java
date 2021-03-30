@@ -3,10 +3,14 @@ package com.example.todoapp.UI;
 import android.app.Application;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -95,4 +99,33 @@ public class Add_Data_Fragments extends Fragment {
     }
 
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.addmenu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.backbutton:  {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, TodoFragment.newInstance())
+                        .commitNow();
+
+                return true;
+            }
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+
+    }
 }
