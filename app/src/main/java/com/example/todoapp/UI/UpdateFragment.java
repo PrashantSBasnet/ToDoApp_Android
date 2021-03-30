@@ -103,47 +103,63 @@ public class UpdateFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                //update_title= task.getTitle();
-               // update_description=  task.getDescription();
-
-               // edit_title = (EditText)view.findViewById(R.id.update_title);
-               // edit_desc = (EditText)view.findViewById(R.id.update_desc);
-
-                //sets the data that is clicked on the form
-                //edit_title.setText(update_title);
-                //edit_desc.setText(update_description);
-
 
 
                 String title = edit_title.getText().toString();
                 String desc = edit_desc.getText().toString();
 
+                if (title.isEmpty())
+                {
+                    showMissing(view);
+                }
+                else {
 
 
-
-                task.setDescription(desc);
-                task.setTitle(title);
-                task.setUpdatedDate(new Date());
-
-
-                //update
-               // Task task = new Task(title, desc, new Date(), new Date(), 1);
-
-                repository.update(task);
+                    task.setTitle(title);
+                    task.setDescription(desc);
+                    task.setUpdatedDate(new Date());
 
 
-                Toast toast = Toast.makeText(getActivity(),"Updated Successfully",LENGTH_SHORT);
+                    repository.update(task);
 
-                //to switch to the another fragment
-                //-----------
+
+                    showToast(view);
+
+
+                    Toast toast = Toast.makeText(getActivity(), "Updated Successfully", LENGTH_SHORT);
+
+                    //to switch to the another fragment
+                    //-----------
+
+                    TodoFragment todoFragment = TodoFragment.newInstance();
+                    assert getFragmentManager() != null;
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, todoFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+
+                /*
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, TodoFragment.newInstance())
                         .commitNow();
+                    */
+
+                }
             }
         });
 
 
+
+
+
         return  view;
+    }
+
+
+    public void showToast(View view) {
+        Toast toast = Toast.makeText(getActivity(), "Updated Todo",
+                Toast.LENGTH_SHORT);
+        toast.show();
     }
 
 
@@ -180,6 +196,12 @@ public class UpdateFragment extends Fragment {
 
     }
 
+    public void showMissing(View view) {
+        Toast toast = Toast.makeText(getActivity(), "Empty title makes invalid todo. Enter a value for the title",
+                Toast.LENGTH_LONG);
+        toast.show();
+    }
+
 
     //Implict intents
 
@@ -194,6 +216,5 @@ public class UpdateFragment extends Fragment {
                 .setChooserTitle(txt+"/n"+des)
                 .setText(txt)
                 .startChooser();
-
     }
 }

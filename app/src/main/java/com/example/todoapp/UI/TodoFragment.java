@@ -106,9 +106,10 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 int position = viewHolder.getAdapterPosition();
+                showToast(view);
                 List<Task> taskList = adapter.getTaskList();
                 mTodoViewModel.deleteTask(taskList.get(position));
-                Toast toast = Toast.makeText(getActivity(),"Deleted Task",LENGTH_SHORT);
+
 
             }
         }).attachToRecyclerView(recyclerView);
@@ -121,7 +122,11 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
         return view;
     }
 
-
+    public void showToast(View view) {
+        Toast toast = Toast.makeText(getActivity(), "Deleted",
+                Toast.LENGTH_SHORT);
+        toast.show();
+    }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -148,6 +153,7 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
 
 
         //--------switching between fragments
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -157,6 +163,7 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
                         .commitNow();
             }
         });
+
         //---------------------------------
 
     }
@@ -165,7 +172,7 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
     //when a to_do item is clicked
     @Override
     public int onItemClick(int position) {
-        Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
+     //   Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
 
         List<Task> listofTasks = adapter.getTaskList();
 
@@ -179,6 +186,12 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
                 .commitNow();
 
         return position;
+    }
+
+    public void showMissing(View view) {
+        Toast toast = Toast.makeText(getActivity(), "Empty field is not a todo. Please enter some value",
+                Toast.LENGTH_SHORT);
+        toast.show();
     }
 }
 

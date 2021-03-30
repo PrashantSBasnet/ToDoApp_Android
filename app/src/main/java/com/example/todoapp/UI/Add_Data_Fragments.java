@@ -16,10 +16,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.todoapp.R;
 import com.example.todoapp.data.Repository;
 import com.example.todoapp.data.Task;
+
+import org.w3c.dom.Text;
 
 import java.util.Date;
 
@@ -70,21 +73,30 @@ public class Add_Data_Fragments extends Fragment {
                 String title = titleEditText.getText().toString();
                 String desc = descEditText.getText().toString();
 
+                if (title.isEmpty() ){
+                    showMissing(view);
+                }
 
-                //insert data to database
-                Task task = new Task(title, desc,  new Date(), new Date(), 1);
-                repository.addTask(task);
+                else {
 
-                //to switch to the another fragment
-                //-----------
-                TodoFragment todoFragment = TodoFragment.newInstance();
-                assert getParentFragmentManager()!=null;
-                FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-                transaction.replace(R.id.container, todoFragment);
-                transaction.addToBackStack(null);
-                transaction.commit();
-                //-----------
 
+                    //insert data to database
+                    Task task = new Task(title, desc, new Date(), new Date(), 1);
+                    repository.addTask(task);
+
+                    showToast(view);
+
+                    //to switch to the another fragment
+                    //-----------
+                    TodoFragment todoFragment = TodoFragment.newInstance();
+                    assert getFragmentManager() != null;
+                    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container, todoFragment);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                    //-----------
+
+                }
                 /* alternatively
                 //switches to the main fragment
                 getActivity().getSupportFragmentManager().beginTransaction()
@@ -106,6 +118,7 @@ public class Add_Data_Fragments extends Fragment {
         setHasOptionsMenu(true);
     }
 
+
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.addmenu, menu);
@@ -126,6 +139,19 @@ public class Add_Data_Fragments extends Fragment {
                 return super.onOptionsItemSelected(item);
         }
 
+    }
 
+
+    public void showToast(View view) {
+        Toast toast = Toast.makeText(getActivity(), "Todo Inserted",
+                Toast.LENGTH_SHORT);
+        toast.show();
+    }
+
+
+    public void showMissing(View view) {
+        Toast toast = Toast.makeText(getActivity(), "Empty title doesn't create a valid todo. Please enter a title",
+                Toast.LENGTH_SHORT);
+        toast.show();
     }
 }

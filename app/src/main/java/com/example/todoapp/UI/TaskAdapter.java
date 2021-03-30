@@ -48,6 +48,8 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
         return new ViewHolder(inflater, parent);
     }
 
+
+    //to find the position
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Task task = taskList.get(position);
@@ -64,7 +66,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
     }
 
 
+
+    //created to find the touch on screen --- position
     public List<Task> getTaskList() {
+
         return taskList;
     }
 
