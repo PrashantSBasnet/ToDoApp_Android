@@ -7,6 +7,7 @@ import androidx.core.app.ShareCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -59,7 +60,7 @@ public class UpdateFragment extends Fragment {
 
         View view= inflater.inflate(R.layout.fragment_update, container, false);
 
-        mTodoViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
+        mTodoViewModel = ViewModelProviders.of(getActivity()).get(MainViewModel.class);
 
         //to get the list clicked
         task=mTodoViewModel.getTask();

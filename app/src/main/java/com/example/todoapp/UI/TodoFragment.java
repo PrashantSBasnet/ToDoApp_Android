@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,28 +51,6 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.examplemenu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.deleteicon:  {
-
-                mTodoViewModel.deleteAll();
-                return true;
-            }
-            case R.id.exit: {
-                System.exit(0);
-                return true;
-            }
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-
-    }
 
 
     @Override
@@ -130,7 +109,7 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
 
 
         //getActivity() instead of this because ToDoFragment not MainActivity
-        mTodoViewModel = new ViewModelProvider(getActivity()).get(MainViewModel.class);
+        mTodoViewModel =  ViewModelProviders.of(getActivity()).get(MainViewModel.class);
 
         // ToDo: Using the ViewModel
 
@@ -166,7 +145,7 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
     }
 
 
-    //when a to_do item is clicked
+    //when an item in the recyclerview is clicked
     @Override
     public int onItemClick(int position) {
      //   Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
@@ -186,6 +165,33 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
     }
 
 
+
+    //for Menu
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.examplemenu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.deleteicon:  {
+
+                mTodoViewModel.deleteAll();
+                Toast toast = Toast.makeText(getActivity(), "All Tasks Deleted",
+                        LENGTH_SHORT);
+                toast.show();
+                return true;
+            }
+            case R.id.exit: {
+                System.exit(0);
+                return true;
+            }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
 
 }
 
