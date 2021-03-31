@@ -187,6 +187,12 @@ public class TodoFragment extends Fragment  implements  RecyclerViewClickInterfa
                 System.exit(0);
                 return true;
             }
+
+            case R.id.about: {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.container, AboutPageFragment.newInstance())
+                        .commitNow();
+            }
             default:
                 return super.onOptionsItemSelected(item);
         }

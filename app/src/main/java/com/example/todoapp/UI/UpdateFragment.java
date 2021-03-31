@@ -1,14 +1,13 @@
 package com.example.todoapp.UI;
 
-import android.os.Bundle;
 
+import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ShareCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,14 +17,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.todoapp.R;
 import com.example.todoapp.data.Repository;
 import com.example.todoapp.data.Task;
-
 import java.util.Date;
-
 import static android.widget.Toast.LENGTH_SHORT;
+
 
 
 public class UpdateFragment extends Fragment {
@@ -71,14 +68,13 @@ public class UpdateFragment extends Fragment {
         update_description=  task.getDescription();
 
 
-
         //the existing values on the form
         edit_title = (EditText)view.findViewById(R.id.update_title);
         edit_desc = (EditText)view.findViewById(R.id.update_desc);
         update_btn=(Button)view.findViewById(R.id.update_btn);
 
         share_btn =(Button)view.findViewById(R.id.button2);
-        //------
+        //------------
 
 
         //sets the data that is clicked on the form
@@ -101,10 +97,8 @@ public class UpdateFragment extends Fragment {
 
         update_btn.setOnClickListener(new View.OnClickListener() {
 
-
             @Override
             public void onClick(View v) {
-
 
                 String title = edit_title.getText().toString();
                 String desc = edit_desc.getText().toString();
@@ -115,14 +109,11 @@ public class UpdateFragment extends Fragment {
                 }
                 else {
 
-
                     task.setTitle(title);
                     task.setDescription(desc);
                     task.setUpdatedDate(new Date());
 
-
                     repository.update(task);
-
 
                     showToast(view);
 
@@ -149,10 +140,6 @@ public class UpdateFragment extends Fragment {
             }
         });
 
-
-
-
-
         return  view;
     }
 
@@ -164,6 +151,7 @@ public class UpdateFragment extends Fragment {
     }
 
 
+    //for menu
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -204,7 +192,7 @@ public class UpdateFragment extends Fragment {
     }
 
 
-    //Implict intents
+    //Implicit intents
 
     public void shareText(Button share_btn) {
         //values to be shared using implicit intent
