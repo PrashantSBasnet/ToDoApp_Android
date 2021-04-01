@@ -37,8 +37,7 @@ public class Add_Data_Fragments extends Fragment {
     private Button submitButton;
     private MainViewModel todoViewModel;
     private Repository repository;
-    private Date today;
-    SimpleDateFormat formatter;
+
 
     public Add_Data_Fragments()
     {

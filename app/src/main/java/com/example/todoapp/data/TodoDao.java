@@ -20,7 +20,7 @@ import java.util.List;
 @Dao
 public interface TodoDao {
 
-    @Query("select * from todos order by priority")
+    @Query("select * from todos order by updated_date DESC")
     LiveData<List<Task>> getAllTasks();
 
     @Update

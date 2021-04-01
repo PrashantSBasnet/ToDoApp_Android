@@ -56,10 +56,14 @@ public  abstract class AppDatabase extends RoomDatabase {
                 public void run() {
                     TodoDao dao = INSTANCE.todoDao();
                     dao.deleteAll();
-                    Task task = new Task("title", "description", new Date(), new Date(), 1);
 
+
+
+                    Task task = new Task("Sample Task", "Initial Tasks", new Date(),new Date(), 1);
                     dao.insert(task);
-                    task = new Task("title1", "description1", new Date(), new Date(), 1);
+
+
+                    task = new Task("First Task", "Todo is ordered by date", new Date(),new Date(), 1);
                     dao.insert(task);
                 }
             });

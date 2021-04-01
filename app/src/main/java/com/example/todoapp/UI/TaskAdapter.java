@@ -17,7 +17,7 @@ import java.util.Locale;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder> {
 
-    private static final String DATE_FORMAT = "dd/MM/yyy";
+    private static final String DATE_FORMAT = "dd/MM/yyy";  //british format
     private final TodoFragment todoFragment;
     private RecyclerViewClickInterface recyclerViewClickInterface;
 
