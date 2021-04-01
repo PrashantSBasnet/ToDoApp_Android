@@ -7,14 +7,16 @@
     android:layout_height="match_parent"
     app:layout_constraintEnd_toStartOf="@+id/radioButton2"
     app:layout_constraintHorizontal_bias="0.5"
-    tools:context="UI.Add_Data_Fragments">
+    tools:context="UI.Add_Data_Fragments"
+    >
 
 
     <EditText
         android:id="@+id/update_desc"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
+        android:layout_width="345dp"
+        android:layout_height="54dp"
         android:layout_marginTop="32dp"
+        android:background="#E9EFEF"
         android:ems="10"
         android:hint="Add Details..."
         android:inputType="text"
@@ -24,14 +26,13 @@
 
     <EditText
         android:id="@+id/update_title"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
+        android:layout_width="346dp"
+        android:layout_height="49dp"
         android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
         android:layout_marginBottom="32dp"
+        android:background="#EDF2F2"
         android:ems="10"
         android:hint="@string/add_task_activity_name"
         android:inputType="text"
@@ -42,28 +43,27 @@
 
     <Button
         android:id="@+id/update_btn"
-        android:layout_width="142dp"
-        android:layout_height="64dp"
+        android:layout_width="130dp"
+        android:layout_height="65dp"
 
-        android:layout_marginBottom="29dp"
-        android:text="Update"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="Update ToDo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintHorizontal_bias="0.698"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_width="70dp"
+        android:layout_height="65dp"
+        android:layout_marginEnd="72dp"
         android:layout_marginBottom="32dp"
-        android:text="Share"
-        app:layout_constraintBottom_toTopOf="@+id/update_btn"
+        app:icon="@android:drawable/ic_menu_share"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent" />
+        tools:visibility="visible" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
