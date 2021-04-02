@@ -25,7 +25,9 @@ Fig: MVVM Implementation
   </ul>
 
 <br>
-![crud1](https://user-images.githubusercontent.com/50170332/113395359-6fde3b00-93b9-11eb-9fbb-54dd6490f241.gif)
+
+![crud2](https://user-images.githubusercontent.com/50170332/113402356-9b1a5780-93c4-11eb-9af5-d5c981a3b222.gif)
+
 
 
 
@@ -57,14 +59,16 @@ Fig: MVVM Implementation
 
 <h3>To Demonstrate the complete Working of the App </h3>
 <br>
-![overall app](https://user-images.githubusercontent.com/50170332/113401419-08c58400-93c3-11eb-8b67-7099794f8814.gif)
+
+![overall __app](https://user-images.githubusercontent.com/50170332/113402457-bf763400-93c4-11eb-953a-3650935d08cf.gif)
+
 
 <h3>References:</h3>
 I have used the following sources to create this application:
 
 <ul>
   
-  <li> Module Tutor: Binay Shah https://github.com/binay-shah for understanding the basics of MVVM and CRUD operation</li>
+  <li> Module Tutor: Mr. Binay Shah https://github.com/binay-shah for understanding the basics of MVVM and CRUD operation</li>
   <li> Developer Guide | Android Developers https://developer.android.com/guide </li>
   <li> w3schools for core Java concepts https://www.w3schools.com</li>
   <li> Design Patterns from https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm </li>
