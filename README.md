@@ -68,7 +68,7 @@ I have used the following sources to create this application:
 
 <ul>
   
-  <li> Module Tutor: Mr. Binay Shah https://github.com/binay-shah for understanding the basics of MVVM and CRUD operation</li>
+  <li> Subject Teacher: Mr. Binay Shah https://github.com/binay-shah for understanding the basics of MVVM and CRUD operation</li>
   <li> Developer Guide | Android Developers https://developer.android.com/guide </li>
   <li> w3schools for core Java concepts https://www.w3schools.com</li>
   <li> Design Patterns from https://www.tutorialspoint.com/design_pattern/data_access_object_pattern.htm </li>
