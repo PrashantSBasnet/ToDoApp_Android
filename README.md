@@ -3,7 +3,7 @@
 A simple app where a user can add, delete, update and read the todos. Each todo has a date associated with it which is set by default. It is the system date and is updated when the user appends the task/ creates it. The tasks on the home screen are ordered by Updated Dates, i.e. the latest tasks are displayed at the top of the list. The app also prompts the user regarding different operations they do like CRUD operation by a Toast message.
 
 <br>
-<h3>Architecure followed: MVVM Architectural Design Pattern</h3>
+<h3>Architecture followed: MVVM Architectural Design Pattern</h3>
 
 <img width="620" alt="mvvm architecture copy" src="https://user-images.githubusercontent.com/50170332/113397218-6a362480-93bc-11eb-8f63-eb6434057a10.png">
 Fig: MVVM Implementation
