@@ -202,8 +202,8 @@ public class UpdateFragment extends Fragment {
         ShareCompat.IntentBuilder
                 .from(getActivity())
                 .setType(mimeType)
-                .setChooserTitle(txt+"/n"+des)
-                .setText(txt)
+                .setChooserTitle(txt)
+                .setText(txt+"\n"+des)
                 .startChooser();
     }
 }
