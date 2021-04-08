@@ -32,7 +32,7 @@ Fig: MVVM Implementation
 
 
 <br>
-<h3>To demonstrate the app has a responsive layout and handles Implicit Intents</h3>
+<h3>To demonstrate handles Implicit Intents and handling states during screen rotation</h3>
 <ul>
   <li>A combination of constraint, linear, frame layout, and the coding techniques to arrange the view items help develop the layout</li>
   <li>Recycler View reuses the views for new items that have scrolled on screen. In this case, the todo lists</li>
